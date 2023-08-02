@@ -12,8 +12,8 @@ export const App = () => {
       <h1>Phonebook</h1>
       <ContactForm />
       <h2>Contacts</h2>
-      {contacts.items.length !== 0 && <Filter />}
-      {contacts.items.length !== 0 && <ContactList />}
+      {contacts.length !== 0 && <Filter />}
+      {contacts.length !== 0 && <ContactList />}
     </>
   );
 };
