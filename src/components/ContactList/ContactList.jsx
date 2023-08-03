@@ -23,15 +23,17 @@ export const ContactList = () => {
   const onRemoveContact = contactId => dispatch(deleteContact(contactId));
 
   const getFilteredContacts = () => {
-    return contacts.filter(
+    return contacts?.filter(
       contact =>
         contact.name.toLowerCase().includes(filter.toLowerCase()) ||
-        contact.number.toLowerCase().includes(filter.toLowerCase())
+        contact.phone.toLowerCase().includes(filter.toLowerCase())
     );
   };
+
   const visible = getFilteredContacts();
 
   if (!visible.length) return null;
+
   return (
     <ul className={css.list}>
       {getFilteredContacts().map(({ id, name, number }) => {
