@@ -2,7 +2,7 @@
 import css from './ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectFilter } from 'redux/selectors';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { deleteContact, fetchContacts } from 'redux/operations';
 
 export const ContactList = () => {
@@ -11,9 +11,14 @@ export const ContactList = () => {
 
   const dispatch = useDispatch();
 
+  const getApiContacts = useCallback(
+    () => dispatch(fetchContacts()),
+    [dispatch]
+  );
+
   useEffect(() => {
-    dispatch(fetchContacts);
-  }, [dispatch]);
+    getApiContacts();
+  }, [getApiContacts]);
 
   const onRemoveContact = contactId => dispatch(deleteContact(contactId));
 
