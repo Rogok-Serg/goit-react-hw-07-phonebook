@@ -29,7 +29,9 @@ export const ContactList = () => {
         contact.number.toLowerCase().includes(filter.toLowerCase())
     );
   };
+  const visible = getFilteredContacts();
 
+  if (!visible.length) return null;
   return (
     <ul className={css.list}>
       {getFilteredContacts().map(({ id, name, number }) => {

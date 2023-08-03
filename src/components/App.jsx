@@ -2,11 +2,10 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 import { useSelector } from 'react-redux';
-import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
+import { selectError, selectIsLoading } from 'redux/selectors';
 import { Loader } from './Loader/Loader';
 
 export const App = () => {
-  const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
@@ -15,8 +14,8 @@ export const App = () => {
       <h1>Phonebook</h1>
       <ContactForm />
       <h2>Contacts</h2>
-      {contacts.length !== 0 && <Filter />}
-      {contacts.length !== 0 && <ContactList />}
+      <Filter />
+      <ContactList />
       {isLoading && !error && <Loader />}
     </>
   );
