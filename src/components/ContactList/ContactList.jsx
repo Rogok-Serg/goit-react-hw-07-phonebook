@@ -36,11 +36,11 @@ export const ContactList = () => {
 
   return (
     <ul className={css.list}>
-      {getFilteredContacts().map(({ id, name, number }) => {
+      {getFilteredContacts().map(({ id, name, phone }) => {
         return (
           <li className={css.items} key={id}>
             <p>{name} </p>
-            <p>: {number}</p>
+            <p>: {phone}</p>
             <button type="button" onClick={() => onRemoveContact(id)}>
               Delete
             </button>
